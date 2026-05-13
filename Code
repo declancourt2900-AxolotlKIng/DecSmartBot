@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DecSmartBot</title>
+    <style>
+        body {
+            background: #f5e6ff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+        }
+        #chatbox {
+            width: 90%;
+            max-width: 500px;
+            height: 400px;
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            overflow-y: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        #inputArea {
+            margin-top: 15px;
+            width: 90%;
+            max-width: 500px;
+            display: flex;
+        }
+        #userInput {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #aaa;
+        }
+        button {
+            margin-left: 10px;
+            padding: 10px 15px;
+            border: none;
+            background: #a855f7;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🤖 DecSmartBot</h1>
+
+<div id="chatbox"></div>
+
+<div id="inputArea">
+    <input id="userInput" placeholder="Say something...">
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+    const chatbox = document.getElementById("chatbox");
+
+    function botReply(text) {
+        chatbox.innerHTML += `<p><b>DecSmartBot:</b> ${text}</p>`;
+        chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    function sendMessage() {
+        const input = document.getElementById("userInput");
+        const message = input.value.trim();
+        if (!message) return;
+
+        chatbox.innerHTML += `<p><b>You:</b> ${message}</p>`;
+        input.value = "";
+
+        // Basic responses
+        if (message.toLowerCase().includes("hi")) {
+            botReply("Hey there! I'm DecSmartBot, your friendly mini‑AI.");
+        } else if (message.toLowerCase().includes("joke")) {
+            botReply("Why did the axolotl cross the road? To get to the other tide.");
+        } else if (message.toLowerCase().includes("story")) {
+            botReply("Once upon a time, a tiny axolotl discovered it could glow when it laughed...");
+        } else {
+            botReply("I'm still learning, but I love chatting with you!");
+        }
+    }
+</script>
+
+</body>
+</html>
